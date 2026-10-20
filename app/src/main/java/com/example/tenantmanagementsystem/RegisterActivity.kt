@@ -2,6 +2,7 @@ package com.example.tenantmanagementsystem
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log // NEW
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tenantmanagementsystem.databinding.ActivityRegisterBinding
@@ -12,6 +13,8 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("TENANT_LIFECYCLE", "RegisterActivity: onCreate") // NEW
+
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -36,5 +39,36 @@ class RegisterActivity : AppCompatActivity() {
         binding.loginLinkTextView.setOnClickListener {
             finish()
         }
+    }
+
+    // ── NEW: LIFECYCLE METHODS ────────────────────────────────────
+    override fun onStart() {
+        super.onStart()
+        Log.d("TENANT_LIFECYCLE", "RegisterActivity: onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("TENANT_LIFECYCLE", "RegisterActivity: onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("TENANT_LIFECYCLE", "RegisterActivity: onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("TENANT_LIFECYCLE", "RegisterActivity: onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("TENANT_LIFECYCLE", "RegisterActivity: onRestart")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("TENANT_LIFECYCLE", "RegisterActivity: onDestroy")
     }
 }
