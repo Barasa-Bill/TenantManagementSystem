@@ -3,7 +3,7 @@ package com.example.tenantmanagementsystem
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log // NEW
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tenantmanagementsystem.databinding.ActivityLoginBinding
@@ -14,7 +14,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("TENANT_LIFECYCLE", "LoginActivity: onCreate") // NEW
+        Log.d("TENANT_LIFECYCLE", "LoginActivity: onCreate")
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -34,6 +34,8 @@ class LoginActivity : AppCompatActivity() {
             }
 
             val intent = Intent(this, MainActivity::class.java)
+            // Attach the email so it shows up in the Navigation Drawer header
+            intent.putExtra("EMAIL", email)
             startActivity(intent)
             finish()
         }
@@ -49,7 +51,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    // ── NEW: LIFECYCLE METHODS ────────────────────────────────────
     override fun onStart() {
         super.onStart()
         Log.d("TENANT_LIFECYCLE", "LoginActivity: onStart")
